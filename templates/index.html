@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Wendy & Bae - Our Love Story</title>
+  <style>
+    body {
+      font-family: 'Georgia', serif;
+      background-color: #fff0f5;
+      color: #333;
+      margin: 0;
+      padding: 0;
+    }
+    header {
+      background-color: #ffb6c1;
+      color: white;
+      padding: 30px;
+      text-align: center;
+    }
+    section {
+      padding: 40px 20px;
+      max-width: 900px;
+      margin: auto;
+    }
+    h2 {
+      color: #c71585;
+      border-bottom: 2px solid #f3c;
+    }
+    .timeline, .letters, .bucket-list {
+      margin: 20px 0;
+    }
+    .gallery img {
+      width: 100%;
+      max-width: 300px;
+      margin: 10px;
+      border-radius: 10px;
+    }
+    .gallery {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      justify-content: center;
+    }
+    iframe {
+      border-radius: 12px;
+      margin-top: 20px;
+    }
+    footer {
+      background-color: #ffe4e1;
+      text-align: center;
+      padding: 20px;
+      font-size: 14px;
+    }
+    ul {
+      line-height: 1.8;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>224👩🏽‍❤️‍💋‍👨🏽💍💕</h1>
+    <p>Our Love Story, Memories & Dreams</p>
+  </header>
+
+  <section>
+    <h2>About Us</h2>
+    <p>Hi! my name is Wendy and my man is Owen,we are two souls who found each other at a very young age unexpectedly and decided to walk through life hand-in-hand. This page is a secret little corner of the internet where we can cherish our memories, share our moments, and dream out loud 💫</p>
+  </section>
+
+  <section>
+    <h2>Our Timeline</h2>
+    <div class="timeline" id="timeline">
+      <!-- Timeline items populated via JavaScript -->
+    </div>
+  </section>
+
+  <section>
+    <h2>Photo Gallery 📸</h2>
+    <div class="gallery" id="gallery">
+      <!-- Images loaded dynamically with JavaScript -->
+    </div>
+  </section>
+
+  <section>
+    <h2>Love Letters 💌</h2>
+    <div class="letters" id="letters">
+      <!-- Letters injected with JavaScript -->
+    </div>
+  </section>
+
+  <section>
+    <h2>Our Playlist 🎶</h2>
+    <iframe style="border-radius:12px" src="https://open.spotify.com/embed/playlist/your-playlist-id" width="100%" height="152" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+  </section>
+
+  <section>
+    <h2>Our Bucket List 🌍</h2>
+    <div class="bucket-list" id="bucket-list">
+      <!-- List populated via JavaScript -->
+    </div>
+  </section>
+
+  <section>
+    <h2>Leave Us a Message 💬</h2>
+    <form action="/submit" method="POST">
+      <input type="text" name="name" placeholder="Your Name" required><br><br>
+      <textarea name="message" placeholder="Your Message to Us" rows="5" cols="50" required></textarea><br><br>
+      <button type="submit">Send Message</button>
+    </form>
+
+    <div id="response"></div>
+  </section>
+
+  <footer>
+    <p>Made with ❤️ by Wendy| 2025</p>
+  </footer>
+
+  <script>
+    const timeline = [
+      { title: "First Met", detail: "03/02/2025 - in school" },
+      { title: "First Date", detail: "20/02/2025" },
+      { title: "First Kiss", detail: "20/02/2025" },
+      { title: "Anniversary", detail: "19/02/2025 - That is when he officially asked if i could be his girl" },
+      { title: "Favorite moment together", detail: "His birthday - 10/05/2025" },
+    ];
+
+    const galleryImages = [
+       "/static/image1.jpeg",
+       "/static/image2.jpeg",
+       "/static/image3.jpeg",
+       "/static/image4.jpeg",
+       "/static/image5.jpeg",
+       "/static/image6.jpeg",
+       "/static/image7.jpeg",
+       "/static/image8.jpeg",
+       "/static/image9.jpeg"
+
+    ];
+
+    const loveLetters = [
+      { from: "Wendy", text: "Loving you has been the most beautiful journey of my life. Every moment with you is magic.💖" },
+      { from: "Owen", text: " I have never loved anyone as much as i love you .✨" },
+    ];
+
+    const bucketList = [
+      "Go on a hot air balloon ride together",
+      "Visit at least 10 different countries",
+      "Adopt a pet 🐶",
+      "Take a road trip",
+      "LOVE EACH OTHER FOREVER"
+    ];
+
+    document.getElementById("timeline").innerHTML = "<ul>" + timeline.map(item => `<li><strong>${item.title}:</strong> ${item.detail}</li>`).join('') + "</ul>";
+
+    document.getElementById("gallery").innerHTML = galleryImages.map(src => `<img src='${src}' alt='Memory'>`).join('');
+
+    document.getElementById("letters").innerHTML = loveLetters.map(letter => `<p><strong>From ${letter.from}:</strong> "${letter.text}"</p>`).join('');
+
+    document.getElementById("bucket-list").innerHTML = "<ul>" + bucketList.map(item => `<li>${item}</li>`).join('') + "</ul>";
+
+    document.getElementById("messageForm").addEventListener("submit", function(e) {
+      e.preventDefault();
+      const name = document.getElementById("name").value;
+      const message = document.getElementById("message").value;
+      document.getElementById("response").innerHTML = `<p>Thank you, ${name}! Your message has been received 💕</p>`;
+      document.getElementById("messageForm").reset();
+    });
+  </script>
+</body>
+</html>
